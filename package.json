@@ -1,6 +1,6 @@
 {
   "name": "@sudobility/windows_canvas_rn",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "A canvas 2D recording context and a Direct2D picture view for React Native Windows",
   "type": "module",
   "main": "./dist/index.js",
@@ -70,6 +70,6 @@
   "license": "BUSL-1.1",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/johnqh/windows_canvas_rn.git"
+    "url": "https://github.com/Sudobility/windows_canvas_rn.git"
   }
 }
