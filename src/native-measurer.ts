@@ -34,8 +34,7 @@ let resolved: TextMeasurer | null = null;
 export function defaultTextMeasurer(): TextMeasurer {
   if (resolved) return resolved;
   const module = (NativeModules as Record<string, unknown>).WindowsCanvas as
-    | WindowsCanvasModule
-    | undefined;
+    WindowsCanvasModule | undefined;
   const measure = module?.measureText;
   resolved =
     Platform.OS === 'windows' && measure
