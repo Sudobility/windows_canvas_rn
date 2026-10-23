@@ -1,6 +1,6 @@
 {
   "name": "@sudobility/windows_canvas_rn",
-  "version": "0.2.7",
+  "version": "0.2.8",
   "description": "A canvas 2D recording context and a Direct2D picture view for React Native Windows",
   "type": "module",
   "main": "./dist/index.js",
@@ -50,18 +50,18 @@
   "devDependencies": {
     "@eslint/js": "~9.39.5",
     "@types/node": "~22.20.5",
-    "@types/react": "~19.1.0",
+    "@types/react": "~19.3.0",
     "@typescript-eslint/eslint-plugin": "~8.72.0",
     "@typescript-eslint/parser": "~8.72.0",
     "eslint": "~9.39.5",
     "eslint-config-prettier": "~10.1.8",
     "eslint-plugin-prettier": "~5.5.7",
-    "eslint-plugin-react-hooks": "~7.1.1",
+    "eslint-plugin-react-hooks": "~7.0.1",
     "eslint-plugin-react-refresh": "~0.4.26",
-    "prettier": "3.8.1",
-    "react": "19.1.0",
+    "prettier": "~3.9.10",
+    "react": "~19.3.1",
     "react-native": "0.81.5",
-    "typescript": "~5.9.2",
+    "typescript": "~5.9.3",
     "vitest": "~4.1.12"
   },
   "publishConfig": {
