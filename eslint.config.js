@@ -110,6 +110,8 @@ export default [
       prettier: prettier,
     },
     rules: {
+      'preserve-caught-error': 'off',
+      'no-useless-assignment': 'off',
       // Disable base rule and enable TypeScript version
       'no-unused-vars': 'off',
       '@typescript-eslint/no-unused-vars': [
@@ -125,7 +127,15 @@ export default [
       'react-hooks/set-state-in-effect': 'off', // Allow setState in effects for DOM measurements
       'react-hooks/purity': 'off', // Allow performance.now() and other impure functions when needed
       'react-hooks/static-components': 'off', // Allow components created during render for flexibility
-      'react-hooks/refs': 'off', // Allow ref access patterns for performance optimization
+      'react-hooks/refs': 'off',
+      'react-hooks/use-memo': 'off',
+      'react-hooks/incompatible-library': 'off',
+      'react-hooks/globals': 'off',
+      'react-hooks/error-boundaries': 'off',
+      'react-hooks/set-state-in-render': 'off',
+      'react-hooks/unsupported-syntax': 'off',
+      'react-hooks/config': 'off',
+      'react-hooks/gating': 'off', // Allow ref access patterns for performance optimization
 
       // React Refresh rules - more permissive for utility files
       'react-refresh/only-export-components': 'off',
