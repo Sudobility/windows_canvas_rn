@@ -1,4 +1,6 @@
 import { readFileSync } from 'node:fs';
+import { dirname, join } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { describe, expect, it } from 'vitest';
 import {
   Composite,
@@ -19,9 +21,8 @@ import {
 } from './format.ts';
 
 const header = readFileSync(
-  new URL('../windows/PictureFormat.h', import.meta.url),
-  'utf8'
-);
+  join(dirname(fileURLToPath(import.meta.url)), '../windows/PictureFormat.h')
+).toString('utf8');
 
 /** `namespace Name { constexpr int Key = 1; … }` → { Key: 1 } */
 function namespaceValues(name: string): Record<string, number> {
