@@ -128,6 +128,8 @@ export default [
       'react-hooks/purity': 'off', // Allow performance.now() and other impure functions when needed
       'react-hooks/static-components': 'off', // Allow components created during render for flexibility
       'react-hooks/refs': 'off',
+      'react-hooks/immutability': 'off',
+      'react-hooks/preserve-manual-memoization': 'off',
       'react-hooks/use-memo': 'off',
       'react-hooks/incompatible-library': 'off',
       'react-hooks/globals': 'off',
