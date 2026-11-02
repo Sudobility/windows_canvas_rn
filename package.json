@@ -1,6 +1,6 @@
 {
   "name": "@sudobility/windows_canvas_rn",
-  "version": "0.2.12",
+  "version": "0.2.13",
   "description": "A canvas 2D recording context and a Direct2D picture view for React Native Windows",
   "type": "module",
   "main": "./dist/index.js",
@@ -31,7 +31,7 @@
     "README.md"
   ],
   "scripts": {
-    "build": "tsc -p tsconfig.build.json",
+    "build": "tsc -p tsconfig.build.json && node scripts/fix-esm-imports.mjs",
     "dev": "tsc -p tsconfig.build.json --watch",
     "clean": "rm -rf dist",
     "typecheck": "tsc --noEmit",
