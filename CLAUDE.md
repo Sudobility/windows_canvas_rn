@@ -57,3 +57,44 @@ Windows setup.
   is why `LineScene.tsx` must keep an unchanged vertex array the same array.
 - **Native sources are listed in `windows/WindowsCanvas.targets`**, which apps
   import. Add a file there, not in an app project.
+
+## Screen rendering — safe area & scroll insets
+
+Honour the device safe area on **every** screen. Always use `useSafeAreaInsets()`
+from `react-native-safe-area-context` (or a `SafeAreaView` with explicit `edges`)
+and pad by the actual inset value. **Never hard-code a padding/margin in place of
+an inset** — a magic number like `paddingBottom: 80` happens to clear today's
+phone and is wrong on the next one.
+
+Decide per axis, by whether that axis scrolls:
+
+**Vertical:**
+- **NOT vertically scrollable** (a fixed screen, a pinned footer/CTA, a camera
+  overlay): the content area must stop at the **top and bottom** safe-area insets
+  — pad top by `insets.top`, bottom by `insets.bottom`. It must not reach the
+  physical top/bottom edge (status bar / notch / home indicator).
+- **Vertically scrollable**: let the scroll view render **full-bleed** to the top
+  and bottom edges, and give it top/bottom **scroll insets** equal to the safe
+  area (`contentInset` + `scrollIndicatorInsets`, or
+  `contentInsetAdjustmentBehavior="automatic"`). Content then starts/ends clear of
+  the unsafe regions while still scrolling edge-to-edge behind them.
+
+**Horizontal** (landscape, display cutout, rounded corners):
+- **NOT horizontally scrollable**: pad left/right by `insets.left` / `insets.right`.
+- **Horizontally scrollable**: render to the left/right edges and give it
+  left/right scroll insets.
+
+**Bottom CTAs under a tab bar — the trap that burns everyone:** inside a tab
+navigator, the bottom safe-area inset (`insets.bottom`, and what a shared
+`BottomActionBar` reads) **already includes the tab-bar height**. So a pinned
+bottom bar padded by `insets.bottom` already lands above the tab bar. Therefore:
+- DO pad the bottom bar by `insets.bottom` and nothing more.
+- DON'T add the tab-bar height on top of the inset, and DON'T reserve it again on
+  the screen root — that double-counts and floats the CTA too high.
+- DON'T pass a `tabBarHeight` (or similar) that makes the bar swap the inset for a
+  flat fixed gap — that ignores the inset and drops the CTA under the tab bar.
+
+Canonical fixed-screen shape: a flex-column root → the content/scroll region →
+a bottom action bar as the **last child** that pads by `insets.bottom` with no
+manual tab-bar math. Copy a screen already doing this correctly (e.g. a Settings
+screen with a Sign-Out button) rather than re-deriving the padding.
